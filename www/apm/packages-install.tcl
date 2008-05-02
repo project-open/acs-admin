@@ -34,6 +34,7 @@ foreach spec_path $packages_spec_files {
     }
 }
 
+
 # Determine which spec files are new installs; install all of the new items.
 set spec_files [list]
 set already_installed_list [list]
