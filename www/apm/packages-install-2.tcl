@@ -21,6 +21,10 @@ set install $enable
 ad_set_client_property -clob t apm pkg_install_list ""
 ad_set_client_property -clob t apm pkg_enable_list ""
 
+foreach install_package $install {
+    lappend spec_files "[acs_root_dir]/packages/$install_package/$install_package.info"
+}
+
 foreach spec_file $spec_files {
     # Get package info, and find out if this is a package we should install
     if { [catch {
