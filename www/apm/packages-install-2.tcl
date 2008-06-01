@@ -22,7 +22,10 @@ ad_set_client_property -clob t apm pkg_install_list ""
 ad_set_client_property -clob t apm pkg_enable_list ""
 
 foreach install_package $install {
-    lappend spec_files "[acs_root_dir]/packages/$install_package/$install_package.info"
+    set info_file "[acs_root_dir]/packages/$install_package/$install_package.info"
+    if {-1 == [lsearch $spec_files $info_file]} {
+        lappend spec_files $info_file
+    }
 }
 
 foreach spec_file $spec_files {
