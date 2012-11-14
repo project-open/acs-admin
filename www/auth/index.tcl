@@ -143,3 +143,25 @@ db_multirow -extend {
 
 set auth_package_id [apm_package_id_from_key "acs-authentication"]
 set parameter_url [export_vars -base /shared/parameters { { package_id $auth_package_id } { return_url [ad_return_url] } }]
+
+
+# ----------------------------------------------------------
+# Left Navbar
+# ----------------------------------------------------------
+
+set ldap_wizard_l10n [lang::message::lookup "" intranet-sysconfig.LDAP_Configuration_Wizard "LDAP Configuration Wizard"]
+set admin_html "
+<ul>
+<li><a href=/intranet-sysconfig/ldap/index>$ldap_wizard_l10n</a>
+</ul>
+"
+
+set left_navbar_html "
+      	<div class='filter-block'>
+        <div class='filter-title'>
+            [lang::message::lookup "" intranet-core.Admin_LDAP_Authorities "Admin LDAP Authorities"]
+        </div>
+	$admin_html
+      	</div>
+	<hr>
+"
