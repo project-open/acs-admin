@@ -63,7 +63,10 @@ foreach spec_file $all_spec_files {
 
 apm_log APMDebug $spec_files
 
-ns_write "Done.<p>
+ns_write "Done.
+<p>
+<font color=red>Warning</font>: Installing new packages can break your system. Please make sure you know what you are doing.
+<p>
 "
 
 if { $spec_files eq "" } {

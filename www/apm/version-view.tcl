@@ -253,7 +253,10 @@ if { $installed_p eq "t" } {
     
     if { $installed_p eq "t" } {	
 	append body "
-	<li><a href=\"package-delete?[export_vars { version_id }]\">Uninstall this package from your system.</a> (be very careful!)\n"
+	<li><a href=\"package-delete?[export_vars { version_id }]\">Uninstall this package from your system.</a> (<font color=red>Warning</font>: Uninstalling packages can break your system. Not all dependencies may be maintained.)
+
+
+\n"
 	
     }
 }
