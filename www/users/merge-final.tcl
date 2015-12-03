@@ -5,9 +5,9 @@ ad_page_contract {
 
     @cvs-id $Id$
 } {
-    to_user_id:integer
-    from_user_id:integer
-    merge_p
+    to_user_id:naturalnum,notnull
+    from_user_id:naturalnum,notnull
+    merge_p:boolean
 } -properties {
     context:onevalue
 } -validate {

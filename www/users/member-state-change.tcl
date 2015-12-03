@@ -7,9 +7,9 @@ ad_page_contract {
     @cvs-id $Id$
 
 } {
-    user_id
+    user_id:naturalnum,notnull
     {member_state "no_change"}
-    {email_verified_p "no_change"}
+    {email_verified_p:boolean "no_change"}
     {return_url ""}
 } -properties {
     context:onevalue
@@ -91,13 +91,13 @@ set subject "$action"
 set message $email_message
 
 if {$return_url eq ""} {
-    set return_url "/acs-admin/users/one?[export_url_vars user_id]"
+    set return_url [export_vars -base /acs-admin/users/one {user_id}]
 } else {
     ad_returnredirect $return_url
     ad_script_abort
 }
 
 set context [list [list "./" "Users"] "$action"]
-set export_vars [export_url_vars email email_from subject message return_url]
+set export_vars [export_vars {email email_from subject message return_url}]
 
 ad_return_template

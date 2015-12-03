@@ -6,178 +6,181 @@ ad_page_contract {
     @creation-date Mon Oct  9 00:13:43 2000
     @cvs-id $Id$
 } {
-    {install:multiple ""}
-    {enable:multiple ""}
-    {force_p "f"}
+    {package_key:multiple ""}
+    {force_p:boolean "f"}
 }
 
-# Install and enable are sets of keys; need to turn them back into spec files.
-set spec_files [ad_get_client_property apm spec_files]
-
-# LARS HACK: I got rid of the separate install/enable checkboxes
-set install $enable
+set title "Package Installation"
+set context [list [list "/acs-admin/apm/" "Package Manager"] $title]
 
 # Clear out previous client properties.
 ad_set_client_property -clob t apm pkg_install_list ""
-ad_set_client_property -clob t apm pkg_enable_list ""
 
-
-if {"" == $spec_files} {
-    ### Get all the spec files
-    # If a package is in the apm_workspace dir then we assume that that is the package that
-    # should be installed and we ignore any such package in the packages dir.
-    # TODO: make sure that it's a later version than that in the packages dir?
-    set packages_root_dir "[acs_root_dir]/packages"
-    set packages_spec_files [apm_scan_packages $packages_root_dir]
-    set workspace_spec_files [apm_scan_packages [apm_workspace_install_dir]]
-    set workspace_filenames [list]
-    foreach spec_path $workspace_spec_files {
-        lappend workspace_filenames [file tail $spec_path]
+if {$package_key eq ""} {
+    set body {
+        <p>
+        No packages selected.<p>
     }
-    set all_spec_files $workspace_spec_files
-    foreach spec_path $packages_spec_files {
-        set spec_filename [file tail $spec_path]
-        if { [lsearch -exact $workspace_filenames $spec_filename] == -1 } {
-            lappend all_spec_files $spec_path
-        }
-    }
-
-    # Determine which spec files are new installs; install all of the new items.
-    set spec_files [list]
-    set already_installed_list [list]
-    set not_compatible_list [list]
-
-    foreach spec_file $all_spec_files {
-        ns_log Notice "packages-install-2: spec_file=$spec_file"
-        array set version [apm_read_package_info_file $spec_file]
-        set version_name $version(name)
-        set package_name $version(package-name)
-        set package_key $version(package.key)
-        if { [apm_package_supports_rdbms_p -package_key $package_key] } {
-            if { [apm_package_registered_p $package_key] } {
-                # This package is already on the system
-                if { [apm_higher_version_installed_p $package_key $version_name] } {
-                    ns_log Notice "higher version installed of $package_key $version_name"
-                    lappend spec_files $spec_file
-                } else {
-                    ns_log Notice "need upgrade of package $package_key $version_name"
-                    lappend already_installed_list "Package &quot;$package_name&quot; ($package_key) version $version_name or higher i\
-s already installed."
-                }
-            } else {
-                lappend spec_files $spec_file
-            }
-        } else {
-            lappend not_compatible_list "Package &quot;$package_name&quot; ($package_key) doesn't support [db_type]."
-        }
-    }
-}
-
-
-foreach spec_file $spec_files {
-    # Get package info, and find out if this is a package we should install
-    if { [catch {
-        array set package [apm_read_package_info_file $spec_file]
-    } errmsg] } {
-        # Unable to parse specification file.
-        # If we get here, its because someone hacked the archive the loading process
-        # which checks the info file and displays an error.
-        # process
-        ns_log Error "$spec_file could not be parsed correctly.  It is not being installed. 
-        The error: $errmsg"	
-    }
-    
-    # Save the package info, we may need it for dependency satisfaction later
-    lappend pkg_info_list [pkg_info_new $package(package.key) $spec_file \
-            $package(embeds) $package(extends) $package(provides) $package(requires) ""]
-    
-    if { [lsearch -exact $install $package(package.key)] != -1 } {
-        # This is a package which we should install
-        lappend install_spec_files $spec_file
-    }
-}
-
-if {![info exists install_spec_files]} {
-    doc_body_append "[apm_header "Package Installation"]<p>
-No packages selected.<p>[ad_footer]"
-    return
-}
-
-### Dependency Check
-set dependency_results [apm_dependency_check -pkg_info_all $pkg_info_list $install_spec_files]
-
-if { [lindex $dependency_results 0] == 1 && [llength [lindex $dependency_results 2]] > 0 } {
-
-    set extra_package_keys [lindex $dependency_results 2]
-
-    # Check was good after adding a couple more packages
-
-    doc_body_append "[apm_header "Package Installation"]
-    <h2>Additional Packages Automatically Added</h2><p>
-    
-    Some of the packages you were trying to install required other packages to be installed first.
-    We've added these additional packages needed, and ask you to review the list of packages below.
-
-    <form action=\"packages-install-2\" method=\"post\">
-    [export_form_vars spec_files]<p>
-    
-    <blockquote>
-    <table>
-    "
-
-    set install [concat $install $extra_package_keys]
-    set enable [concat $enable $extra_package_keys]
-    
-    doc_body_append [apm_package_selection_widget [lindex $dependency_results 1] $install $enable]
-
-    doc_body_append "
-    </table></blockquote>
-    <input type=submit value=\"Select Data Model Scripts\">
-    </form>
-    [ad_footer]
-    "
-
-} elseif { ([lindex $dependency_results 0] == 1) || $force_p eq "t" } {
-    ### Check passed!  Initiate install.
-
-    # We use client properties to pass along this information as it is fairly large.
-    ad_set_client_property -clob t apm pkg_install_list [lindex $dependency_results 1]
-    ad_set_client_property -clob t apm pkg_enable_list $enable
-
-    ad_returnredirect packages-install-3
-    ad_script_abort
 } else {
-    ### Check failed.  Offer user an explanation and an ability to select unselect packages.
-    doc_body_append "[apm_header "Package Installation"]
-    <h2>Select Packages to Install</h2><p>
-    
-    Some of the packages you are trying to install have unsatisfied dependencies.  The packages
-    with unsatisfied dependencies have been deselected.  If you wish to install packages that do
-    not pass dependencies, please click the \"force\" option below.
-    <form action=\"packages-install-2\" method=\"post\">
-    
-    <ul>
-    <li>To <b>install</b> a package is to load its data model.
-    <li>To <b>enable</b> a package is to make it available to users.
-    </ul>
-    
-    If you think you might want to use a package later (but not right away),
-    install it but don't enable it.
-    
-    [export_form_vars spec_files]<p>
-    
-    <blockquote>
-    <table>
-    "
-    
-    doc_body_append [apm_package_selection_widget [lindex $dependency_results 1] $install $enable]
 
-    
-    doc_body_append "
-    </table></blockquote>
-    <input type=checkbox name=force_p value=\"t\"> <strong>Force the install<p></strong>
-    <input type=submit value=\"Select Data Model Scripts\">
-    </form>
-    [ad_footer]
-    "
+    #####
+    #
+    # Check dependencies
+    #
+    #####
+    apm_get_package_repository -array repository
+
+    set install_pkgs $package_key
+    while 1 {
+        set fixpoint_p 1
+
+        ns_log notice "run apm_dependency_check_new with <$install_pkgs>"
+        array set result [apm_dependency_check_new \
+                              -repository_array repository \
+                              -package_keys $install_pkgs]
+        #ns_log notice "RESULT of apm_dependency_check_new: [array get result]"
+
+        array set failed $result(failed)
+      
+        switch $result(status) {
+            ok {
+                set title "Confirm"
+            }
+            failed {
+                set title "Missing Required Packages"
+            }
+            default {
+                error "Bad status returned from apm_depdendency_check_new: '$result(status)'"
+            }
+        }
+
+        #
+        # Get the package info list with potential unresolved dependencies
+        #
+        set pkg_info_list {}
+        foreach pkg $result(packages) {
+            
+            #
+            # Load package info from spec file. 
+            #
+            if {[catch {set spec_file [apm_package_info_file_path $pkg]}]} {
+                #
+                # In case the spec file is not found (unknown package)
+                # produce an empty entry.
+                #
+                array set package [list package.key $pkg embeds "" extends "" \
+                                       provides "" requires "" properties {install ""}]
+            } else {
+                array set package [apm_read_package_info_file $spec_file]
+            }
+
+            if {[info exists failed($pkg)]} {
+                set comments {}
+                foreach e $failed($pkg) {
+                    lappend comments "Requires: [lindex $e 0] [lindex $e 1]"
+                }
+                set flag f
+            } else {
+                lassign {t ""} flag comments
+                array set properties $package(properties)
+                
+                set must_add {}
+                foreach p $properties(install) {
+                    if {$p ni $install_pkgs} {
+                        lappend must_add $p
+                    }
+                }
+                if {[llength $must_add] > 0} {
+                    lappend install_pkgs {*}$must_add
+                    ns_log notice "+++ install_pkgs <$install_pkgs> after must_add <$must_add>"
+                    set fixpoint_p 0
+                    break
+                }
+            }
+            lappend pkg_info_list [pkg_info_new $package(package.key) \
+                                       $spec_file \
+                                       $package(embeds) \
+                                       $package(extends) \
+                                       $package(provides) \
+                                       $package(requires) \
+                                       $flag $comments]
+        }
+        if {$fixpoint_p} break
+    }
+
+    #
+    # When the package list was extended by the dependency test, show
+    # it again to the user
+    #
+
+    if {$result(status) eq "ok" && [llength $result(install)] > [llength $package_key]} {
+
+        set body [subst {
+            <h2>Additional Packages Automatically Added</h2><p>
+            
+            Some of the packages you were trying to install required
+            other packages to be installed first.  We've added these
+            additional packages needed, and ask you to review the list
+            of packages below.
+
+            <form action="packages-install-2" method="post">
+        }]
+
+        append body [apm_package_selection_widget $pkg_info_list $result(install)]
+        append body [subst {
+            <div><input type="submit" value="Select Data Model Scripts"></div>
+            </form>
+        }]
+        
+    } elseif {$result(status) eq "ok" || $force_p} {
+        
+        # We use client properties to pass along this information as
+        # it is fairly large.
+        ad_set_client_property -clob t apm pkg_install_list $pkg_info_list
+
+        ad_returnredirect packages-install-3
+        ad_script_abort
+
+    } else {
+
+        ### Check failed.  Offer user an explanation and an ability to
+        ### select unselect packages.
+
+        #[export_vars -form {package_key}]<p>
+
+        set body [subst {
+
+            <h2>Unsatisfied Dependencies</h2><p>
+            
+            Some of the packages you are trying to install have
+            unsatisfied dependencies.  The packages with unsatisfied
+            dependencies have been deselected.  If you wish to install
+            packages that do not pass dependencies, please click the
+            "force" option below.
+
+            <form action="packages-install-2" method="post">
+            <p>
+            If you think you might want to use a package later (but not right away),
+            install it but don't enable it.
+        }]
+        
+        append body \
+            [apm_package_selection_widget $pkg_info_list $result(install)] \
+            [subst {
+                <input type="checkbox" name="force_p" value="t"> <strong>Force the install<p></strong>
+                <input type="submit" value="Select Data Model Scripts">
+                </form>
+            }]
+    }
+
+
 }
+
+ad_return_template apm
+
+#
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

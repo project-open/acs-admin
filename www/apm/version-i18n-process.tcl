@@ -6,7 +6,7 @@ ad_page_contract {
     @creation-date 8 October 2002
     @cvs-id $Id$  
 } {
-    version_id:integer,notnull    
+    version_id:naturalnum,notnull    
     {files:multiple}
     {file_action:multiple}
 }
@@ -22,7 +22,7 @@ set replace_tags_p [ad_decode [lsearch -exact $file_action replace_tags] "-1" "0
 
 # If no texts should be replaced we need not give the user a choice of keys to use and
 # can go straight to the processing
-set redirect_url "version-i18n-process-2?[export_vars -url {version_id files:multiple file_action:multiple}]"
+set redirect_url [export_vars -base version-i18n-process-2 {version_id files:multiple file_action:multiple}]
 if { ! $replace_text_p } {
 
     ad_returnredirect $redirect_url
@@ -32,9 +32,9 @@ if { ! $replace_text_p } {
 # Process one adp at a time interactively
 set file [lindex $files 0]
 
-set full_file_name "[acs_root_dir]/$file"
+set full_file_name "$::acs::rootdir/$file"
 
-set adp_report_list [lang::util::replace_adp_text_with_message_tags "[acs_root_dir]/$file" report]
+set adp_report_list [lang::util::replace_adp_text_with_message_tags "$::acs::rootdir/$file" report]
 set adp_replace_list [lindex $adp_report_list 0]
 set adp_no_replace_list [lindex $adp_report_list 1]
 

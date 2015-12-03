@@ -32,7 +32,7 @@ list::create \
             html { align center }
             display_template {
                 <if @authorities.enabled_p@ true>
-                <a href="@authorities.enabled_p_url@" title="\#acs-admin.Disable_this_authority\#"><img src="/shared/images/checkboxchecked" alt="enabled" height="13" width="13" style="background-color: white; border: 0;"></a>
+                <a href="@authorities.enabled_p_url@" title="\#acs-admin.Disable_this_authority\#"><img src="/shared/images/checkboxchecked.gif" alt="enabled" height="13" width="13" style="background-color: white; border: 0;"></a>
                 </if>
                 <else>
                 <a href="@authorities.enabled_p_url@" title="\#acs-admin.Enable_this_authority\#"><img src="/shared/images/checkbox" height="13" width="13" style="background-color: white; border: 0;" alt="disabled"></a>
@@ -123,10 +123,10 @@ db_multirow -extend {
     order  by sort_order
 } {
     set toggle_enabled_p [ad_decode $enabled_p "t" "f" "t"]
-    set enabled_p_url "authority-set-enabled-p?[export_vars { authority_id {enabled_p $toggle_enabled_p} }]"
+    set enabled_p_url [export_vars -base authority-set-enabled-p { authority_id {enabled_p $toggle_enabled_p} }]
     set delete_url [export_vars -base authority-delete { authority_id }]
-    set sort_order_url_up "authority-set-sort-order?[export_vars { authority_id {direction up} }]"
-    set sort_order_url_down "authority-set-sort-order?[export_vars { authority_id {direction down} }]"
+    set sort_order_url_up [export_vars -base authority-set-sort-order { authority_id {direction up} }]
+    set sort_order_url_down [export_vars -base authority-set-sort-order { authority_id {direction down} }]
 
     if {$authority_id eq $register_authority_id} {
         # The authority is selected as register authority
@@ -143,25 +143,3 @@ db_multirow -extend {
 
 set auth_package_id [apm_package_id_from_key "acs-authentication"]
 set parameter_url [export_vars -base /shared/parameters { { package_id $auth_package_id } { return_url [ad_return_url] } }]
-
-
-# ----------------------------------------------------------
-# Left Navbar
-# ----------------------------------------------------------
-
-set ldap_wizard_l10n [lang::message::lookup "" intranet-sysconfig.LDAP_Configuration_Wizard "LDAP Configuration Wizard"]
-set admin_html "
-<ul>
-<li><a href=/intranet-sysconfig/ldap/index>$ldap_wizard_l10n</a>
-</ul>
-"
-
-set left_navbar_html "
-      	<div class='filter-block'>
-        <div class='filter-title'>
-            [lang::message::lookup "" intranet-core.Admin_LDAP_Authorities "Admin LDAP Authorities"]
-        </div>
-	$admin_html
-      	</div>
-	<hr>
-"

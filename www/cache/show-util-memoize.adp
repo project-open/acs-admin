@@ -1,6 +1,6 @@
   <master>
-    <property name="title">@page_title;noquote@</property>
-    <property name="context">@context;noquote@</property>
+    <property name="doc(title)">@page_title;literal@</property>
+    <property name="context">@context;literal@</property>
 
     Search for <b><code>@pattern@</code></b>:
 
@@ -34,21 +34,21 @@
 	      <% set bg "#f8f8ee" %>
 	    </else>
 	    <tr bgcolor="@bg@">
-	      <td valign=top>@matches.key@</td>
-	      <td valign=top>@matches.value;noquote@</td>
-	      <td valign=middle rowspan=2>
+	      <td valign="top">@matches.key@</td>
+	      <td valign="top">@matches.value;noquote@</td>
+	      <td valign="middle" rowspan="2">
 		<form action=one method=post>
-		  <input type=hidden name=key value="@matches.full_key@">
-		  <input type=hidden name="raw_date" value="@matches.raw_date@">
-		  <input type=hidden name=pattern value="@pattern@">
-		  <input type=submit value="Show">
+		  <input type="hidden" name="key" value="@matches.full_key@">
+		  <input type="hidden" name="raw_date" value="@matches.raw_date@">
+		  <input type="hidden" name="pattern" value="@pattern@">
+		  <input type="submit" value="Show">
 		</form>
 	      </td>
 	    </tr>
 	    <tr bgcolor="@bg@">
 	      <td align="right" colspan="2">
 		<font color="#666666">
-		  Cached @matches.date@ -	@matches.value_size@ bytes
+		  @matches.date@ - @matches.value_size@ bytes
 		</font>
 	      </td>
 	    </tr>

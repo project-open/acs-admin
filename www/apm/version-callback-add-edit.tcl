@@ -6,13 +6,13 @@ ad_page_contract {
     @creation-date 28 January 2003
     @cvs-id $Id$  
 } {
-    version_id:integer,notnull    
+    version_id:naturalnum,notnull    
     {type ""}
 }
 
 db_1row package_version_info "select pretty_name, version_name from apm_package_version_info where version_id = :version_id"
 
-set return_url "version-callbacks?[export_vars { version_id }]"
+set return_url [export_vars -base version-callbacks { version_id }]
 
 # Set default values for type and proc name
 if { $type eq "" } {
@@ -65,12 +65,12 @@ ad_form -name callback -cancel_url $return_url -form {
 
 } -validate {
     {proc
-    { ![empty_string_p [info procs ::${proc}]] }
-    {The specified procedure name does not exist. Is the -procs.tcl file loaded?}
+	{ {info commands ::$proc} ne "" }
+	{The specified procedure name does not exist. Is the -procs.tcl file loaded?}
     }
     {proc
-    { [apm_callback_has_valid_args -type $type -proc_name $proc] }
-    {The callback proc $proc must be defined with ad_proc [ad_decode [apm_arg_names_for_callback_type -type $type] "" "and should take no arguments" "and have the following required switches: [apm_arg_names_for_callback_type -type $type]"]}
+	{ [apm_callback_has_valid_args -type $type -proc_name $proc] }
+	{The callback proc $proc must be defined with ad_proc [ad_decode [apm_arg_names_for_callback_type -type $type] "" "and should take no arguments" "and have the following required switches: [apm_arg_names_for_callback_type -type $type]"]}
     }
 } -on_submit {
     

@@ -1,42 +1,37 @@
 <master>
-  <property name="title">@page_title;noquote@</property>
-  <property name="context">@context;noquote@</property>
+  <property name="doc(title)">@page_title;literal@</property>
+  <property name="context">@context;literal@</property>
 
-<table bgcolor="#cccccc" cellpadding="0" cellspacing="0" border="0" align="right">
-  <tr>
-    <td>
-      <table cellspacing="1" cellpadding="4" border="0">
-        <tr bgcolor="#ccccff">
+<div style="float: right;">
+  <table style="border: 1px solid #cccccc; border-collapse: collapse; background-color: #eeeeee;">
+    <tr style="background-color: #ccccff">
           <th>
             Quick Links
           </th>
-        </tr>
-        <tr bgcolor="#eeeeee">
+    </tr>
+    <tr>
           <td>
             <a href="http://openacs.org/">Developer Community</a>
           </td>
-        </tr>
-        <tr bgcolor="#eeeeee">
+    </tr>
+    <tr>
           <td>
             <a
                href="http://openacs.org/forums/forum-view?forum_id=14013">OpenACS Q&amp;A forum</a>
           </td>
-        </tr>
-        <tr bgcolor="#eeeeee">
+    </tr>
+    <tr>
           <td>
             <a href="http://openacs.org/forums/">Other OpenACS forums</a>
           </td>
-        </tr>
-       <tr bgcolor="#eeeeee">
+    </tr>
+    <tr>
           <td>
             <a href="http://openacs.org/bugtracker/openacs/">Report a bug</a>
           </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-
+    </tr>
+  </table>
+</div>
 
 <h3>Tools For Developers</h3>
 
@@ -52,11 +47,11 @@
       <ul>
       <li>
 	<b>Customize the front page</b>. Edit the files
-      <code>@acs_root_dir@/www/index.adp</code> and
-      <code>@acs_root_dir@/www/index.tcl</code>.  (<a
+      <code>@acs::rootdir@/www/index.adp</code> and
+      <code>@acs::rootdir@/www/index.tcl</code>.  (<a
       href="/doc/templates.html">More information</a>)
       </li>
-      <li>Change the site's overall appearance by <b>editing the master template</b> that wraps every page. The master template is <code>@acs_root_dir@/www/default-master.adp</code>.       An ADP file is almost like HTML, except with a few extra bells
+      <li>Change the site's overall appearance by <b>editing the master template</b> that wraps every page. The master template is <code>@acs::rootdir@/www/default-master.adp</code>.       An ADP file is almost like HTML, except with a few extra bells
       and whistles (<a href="/doc/acs-templating/designer-guide.html"
       title="Templating Designer's Guide">more information</a>).</li>
 
@@ -91,7 +86,7 @@
       title="OpenACS Discussion Forums">discussion forums</a> on
       openacs.org, including the <a
       href="http://openacs.org/forums/forum-view?forum_id=14013"
-      title="OpenACS discussion forum on openacs.org">OpenACS Q&A
+      title="OpenACS discussion forum on openacs.org">OpenACS Q&amp;A
       forum</a>.</li>
       <li>Post <b>bugs</b> and <b>feature requests</b> in the <a href="http://openacs.org/bugtracker/openacs/" 
       title="Software Development Manager on openacs.org">Bug

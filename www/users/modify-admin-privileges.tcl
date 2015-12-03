@@ -5,9 +5,9 @@ ad_page_contract {
     @cvs-id $Id$
 
 } {
-    user_id:notnull
+    user_id:naturalnum,notnull
     action:notnull
-    confirmed_p:optional
+    confirmed_p:boolean,optional
 }
 
 set confirmed_url "/acs-admin/users/modify-admin-privileges?user_id=$user_id&action=$action&confirmed_p=1"

@@ -1,6 +1,6 @@
 <master>
-  <property name="title">@page_title;noquote@</property>
-  <property name="context">@context;noquote@</property>
+  <property name="doc(title)">@page_title;literal@</property>
+  <property name="context">@context;literal@</property>
 
 <h1>@page_title@</h1>
 <table style="border: 1px solid gray" border="1" cellspacing="0" cellpadding="3">
@@ -17,17 +17,11 @@
   </tr>
   <tr>
     <td>
-      <a href="@remote_install_url@">Install from Repository</a>
+      <a href="@remote_install_url@">Install</a> or 
+      <a href="@remote_upgrade_url@">upgrade</a> 
+      from repository.
     </td>
-    <td><a href="@local_install_url@">Install from Local</a></td>
-  </tr>
-  <tr>
-    <td>
-      <a href="@remote_upgrade_url@">Upgrade from Repository</a>
-    </td>
-    <td>
-      <a href="@local_upgrade_url@">Upgrade from Local</a>
-    </td>
+    <td><a href="@local_install_url@">Install or upgrade</a> from local file system.</td>
   </tr>
 </table>
 

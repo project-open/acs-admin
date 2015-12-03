@@ -1,6 +1,6 @@
   <master>
-    <property name=title>Merge account system</property>
-    <property name="context">@context;noquote@</property>
+    <property name="doc(title)">Merge account system</property>
+    <property name="context">@context;literal@</property>
     
     <h2>Confirm Merge</h2>
     
@@ -27,7 +27,7 @@
       <table>
 	<tr>
 	  <td>
-	    <input type=radio name=merge_p value=1>
+	    <input type="radio" name="merge_p" value="1">
 	  </td>
 	  <td> 
 	    Yes, I'm sure that I don't need the account @from_email@ anymore!.
@@ -35,17 +35,17 @@
         </tr>
         <tr>
 	  <td>
-            <input  checked=checked type=radio name=merge_p value=0 >
+            <input  checked=checked type="radio" name="merge_p" value="0" >
           </td>
           <td>
 	    No, I'm not sure.
 	  </td>
 	</tr>
 	<tr>
-	  <td colspan=2 align=center>
-            <input type=hidden name=from_user_id value="@from_user_id@">
-            <input type=hidden name=to_user_id value="@to_user_id@">
-	    <input type=submit value="OK">
+	  <td colspan="2" align="center">
+            <input type="hidden" name="from_user_id" value="@from_user_id@">
+            <input type="hidden" name="to_user_id" value="@to_user_id@">
+	    <input type="submit" value="OK">
           </td>
 	</tr>
       </table>
