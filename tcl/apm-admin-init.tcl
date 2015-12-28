@@ -21,12 +21,12 @@ if {[ns_server connections] == 0} {
 
   if {[info commands ::xo::db::require] ne ""} {
       ::xo::db::require table apm_package_downloads {
-	  time     timestamp,
-	  ip       text,
-	  user_id  integer,
-	  channel  text,
-	  package  text,
-	  version  text,
+	  time     timestamp
+	  ip       text
+	  user_id  integer
+	  channel  text
+	  package  text
+	  version  text
 	  url      text
       }
 
