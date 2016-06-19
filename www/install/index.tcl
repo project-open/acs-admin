@@ -18,3 +18,7 @@ set remote_upgrade_url [export_vars -base "install/install" { {upgrade_p 1} repo
 #    tcl-indent-level: 4
 #    indent-tabs-mode: nil
 # End:
+
+
+
+ad_returnredirect "/acs-admin/apm/packages-install"
