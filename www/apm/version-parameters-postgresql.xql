@@ -6,7 +6,7 @@
        <querytext>
 
             select parameter_name, coalesce(description, 'No Description') as description, datatype, 
-                default_value, parameter_id, coalesce(section_name, 'No Section') as section_name
+                default_value, parameter_id, coalesce(section_name, 'No Section') as section_name, scope
             from apm_parameters
             where package_key = :package_key
             $sql_clauses
