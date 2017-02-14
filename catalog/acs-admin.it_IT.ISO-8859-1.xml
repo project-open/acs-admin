@@ -11,7 +11,7 @@
   <msg key="Are_you_sure_you_want_to_delete_authority_authorities_pretty_name">Eliminare autorità %authorities.pretty_name%?</msg>
   <msg key="Authentication">Autentificazione</msg>
   <msg key="Authority_name">Nome autorità</msg>
-  <msg key="Authority_short_name_help_text">Si usa come riferimento all'autorità nei parametri, ecc. Deve rimanere inalterato anche in caso di modifica al nome visualizzato.</msg>
+  <msg key="Authority_short_name_help_text">Si usa come riferimento all&#39;autorità nei parametri, ecc. Deve rimanere inalterato anche in caso di modifica al nome visualizzato.</msg>
   <msg key="Batch_sync_enabled">Sincronizzazione in batch abilitata</msg>
   <msg key="Batch_Synchronization">Sincronizzazione in batch</msg>
   <msg key="Change_password_URL">URL modifica password</msg>
@@ -27,17 +27,17 @@
   <msg key="Document_status">Stato del documento</msg>
   <msg key="download">scarica</msg>
   <msg key="Edit_callback">Modifica callback</msg>
-  <msg key="Enable_this_authority">Abilita quest'autorità</msg>
+  <msg key="Enable_this_authority">Abilita quest&#39;autorità</msg>
   <msg key="Enabled">Abilitato</msg>
   <msg key="End_time">Ora finale</msg>
   <msg key="General">Generale</msg>
   <msg key="GetDocument_implementation">Implementazione GetDocument</msg>
-  <msg key="Help_contact_help_text">Dati di contatto (telefono, e-mail, ecc.) da mostrare come ultima risorsa quando si presenta un problema con un'autorità.</msg>
+  <msg key="Help_contact_help_text">Dati di contatto (telefono, e-mail, ecc.) da mostrare come ultima risorsa quando si presenta un problema con un&#39;autorità.</msg>
   <msg key="Help_contact_text">Testo aiuto contatto </msg>
   <msg key="Interactive">Interattivo</msg>
   <msg key="Invoke">Invocare</msg>
   <msg key="Invoke_this_callback_proc_now_Be_careful">Invocare ora questa procedura di callback. Attenzione!</msg>
-  <msg key="Make_this_the_authority_for_registering_new_users">Rendere quest'autorità quella che registra i nuovi utenti</msg>
+  <msg key="Make_this_the_authority_for_registering_new_users">Rendere quest&#39;autorità quella che registra i nuovi utenti</msg>
   <msg key="Message">Messaggio</msg>
   <msg key="Move_this_authority_down">Sposta in basso la presente autorità</msg>
   <msg key="Move_this_authority_up">Sposta in alto la presente autorità</msg>
@@ -59,8 +59,8 @@
   <msg key="Recover_password_URL">URL per il recupero password</msg>
   <msg key="Recover_password_URL_help_text">Invece di un drivere per la gestione della password, si fornisce un URL in cui vengono inviati quegli utenti che desiderano recuperare la password. Tutti i nomi utente in questo URL devono essere scritti come foo={username} dove {username} verrà sostituito dal nome utente reale.</msg>
   <msg key="Registration">Registrazioine</msg>
-  <msg key="Run_time">Tempo d'esecuzione</msg>
-  <msg key="Running_time">Tempo d'esecuzione</msg>
+  <msg key="Run_time">Tempo d&#39;esecuzione</msg>
+  <msg key="Running_time">Tempo d&#39;esecuzione</msg>
   <msg key="seconds">secondi</msg>
   <msg key="Service">Servizio</msg>
   <msg key="Service_administration">Gestione servizio</msg>
@@ -68,17 +68,17 @@
   <msg key="Short_Name">Nome breve</msg>
   <msg key="Site-Wide_Admin">Gestione sito</msg>
   <msg key="Snapshot">Istantanea</msg>
-  <msg key="Start_time">Ora d'avvio</msg>
+  <msg key="Start_time">Ora d&#39;avvio</msg>
   <msg key="Success">Successo</msg>
   <msg key="Tcl_Callbacks">Callback TCL</msg>
   <msg key="Tcl_Proc">Proc TCL</msg>
   <msg key="Timestamp">Timestamp</msg>
   <msg key="Type">Tipo</msg>
   <msg key="User_Info">Info utente</msg>
-  <msg key="User_Info_help_text">L'implementazione per recuperare le informazioni dell'utente dall'autorità in tempo reale</msg>
+  <msg key="User_Info_help_text">L&#39;implementazione per recuperare le informazioni dell&#39;utente dall&#39;autorità in tempo reale</msg>
   <msg key="Username">Nome utente</msg>
   <msg key="View_log_entry">Visualizza elemento log</msg>
   <msg key="Visit_service_pages">Visita pagine di servizio</msg>
   <msg key="Yes">Sì</msg>
-  <msg key="You_are_changing_all_user_registrations_to_be_in_authority_authorities_pretty_name">Si stanno cambiando tutte le registrazioni utente nell'autorità %authorities.pretty_name%</msg>
+  <msg key="You_are_changing_all_user_registrations_to_be_in_authority_authorities_pretty_name">Si stanno cambiando tutte le registrazioni utente nell&#39;autorità %authorities.pretty_name%</msg>
 </message_catalog>
