@@ -3,16 +3,16 @@
 
   <msg key="Account_reg_URL_help_text">URL waarmee gebruikers zich kunnen registreren voor een nieuw account</msg>
   <msg key="Account_Registration">Account registratie</msg>
-  <msg key="Account_registration_URL">Account registratie URL</msg>
+  <msg key="Account_registration_URL">URL Account registratie</msg>
   <msg key="Actions">Acties</msg>
-  <msg key="Actions_Minute">Acties/Minuut</msg>
+  <msg key="Actions_Minute">Acties/Aanttekeningen</msg>
   <msg key="Add_callback">Toevoegen van een callback</msg>
   <msg key="Administration">Administratie</msg>
   <msg key="Are_you_sure_you_want_to_delete_authority_authorities_pretty_name">Bent u zeker dat u de volgende autorisatie wilt verwijderen: %authorities.pretty_name%?</msg>
   <msg key="Authentication">Autorisatie</msg>
   <msg key="Authority_name">Autorisatie naam</msg>
-  <msg key="Authority_short_name_help_text">Dit wordt gebruikt bij de referentie om parameters te autoriseren etc. Zelfs als u bovenstaande naam wilt wijzigen, zou dit veld ongewijzigd moeten blijven.</msg>
-  <msg key="Batch_sync_enabled">Batch synchronisatie is ge-enabled</msg>
+  <msg key="Authority_short_name_help_text">Dit wordt gebruikt bij de referentie om parameters te autoriseren etc. Zelfs als u bovenstaande naam wilt wijzigen, moet dit veld ongewijzigd blijven.</msg>
+  <msg key="Batch_sync_enabled">Batch synchronisatie is enabled</msg>
   <msg key="Batch_Synchronization">Batch synchronisatie</msg>
   <msg key="Change_password_URL">Wijzigen URL paswoord</msg>
   <msg key="Change_password_URL_help_text">In plaats van een wachtwoord management driver, kunt U een URL naar gebruikers zenden als zij hun wachtwoord willen wijzigen. Iedere gebruikersnaam in deze URL moet de syntax foo={username}hebben, waarna de {username}wordt vervangen door de werkelijke gebruikersnaam</msg>
@@ -33,7 +33,7 @@
   <msg key="General">Algemeen</msg>
   <msg key="GetDocument_implementation">GetDocument implementatie</msg>
   <msg key="Help_contact_help_text">De te tonen contactinformatie (mobiel nummer, email, etc.) in geval dat gebruikers onoverkomelijke problemen hebben met hun bevoegdheden.</msg>
-  <msg key="Help_contact_text">Help contact tekste</msg>
+  <msg key="Help_contact_text">Help contact tekst</msg>
   <msg key="Interactive">Interactief</msg>
   <msg key="Invoke">Invoegen</msg>
   <msg key="Invoke_this_callback_proc_now_Be_careful">Invoegen van deze terugbelactie. Wees voorzichtig!</msg>
@@ -45,7 +45,7 @@
   <msg key="No">Nee</msg>
   <msg key="Number_of_actions">Aantal acties</msg>
   <msg key="Number_of_problems">Aantal problemen</msg>
-  <msg key="On-Demand_Sync">On-Demand Sync</msg>
+  <msg key="On-Demand_Sync">Sync op aanvraag</msg>
   <msg key="One_batch_job">Een batch job</msg>
   <msg key="Operation">Bewerking</msg>
   <msg key="Order">Order*</msg>
@@ -70,7 +70,7 @@
   <msg key="Snapshot">Snapshot</msg>
   <msg key="Start_time">Starttijd</msg>
   <msg key="Success">Succes</msg>
-  <msg key="Tcl_Callbacks">Tcl terugbelactie</msg>
+  <msg key="Tcl_Callbacks">Tcl Callback</msg>
   <msg key="Tcl_Proc">Tcl proc</msg>
   <msg key="Timestamp">Tijdstempel</msg>
   <msg key="Type">Type</msg>
