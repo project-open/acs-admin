@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message_catalog package_key="acs-admin" locale="pl_PL" charset="utf-8">
+
+  <msg key="Authentication">Autoryzacja</msg>
+  <msg key="Disable_this_authority">Wyłącz tą autoryzację</msg>
+  <msg key="Enabled">Włączony</msg>
+  <msg key="Name">Nazwa</msg>
+  <msg key="Order">Kolejność*</msg>
+  <msg key="Password">Hasło</msg>
+  <msg key="Registration">Rejestracja</msg>
+</message_catalog>
