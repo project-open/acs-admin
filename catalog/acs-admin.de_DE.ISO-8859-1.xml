@@ -6,6 +6,8 @@
   <msg key="Account_registration_URL">URL zum registrieren eines Kontos</msg>
   <msg key="Actions">Aktionen</msg>
   <msg key="Actions_Minute">Actionen/Minute</msg>
+  <msg key="Add_callback">Neuer Callback
+</msg>
   <msg key="Administration">Administration</msg>
   <msg key="Authentication">Authentifizierung</msg>
   <msg key="Authority_name">Domänenname</msg>
