@@ -2,42 +2,23 @@
 <message_catalog package_key="acs-admin" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="Account_reg_URL_help_text">URL für Benutzer zum registrieren eines neuen Kontos.</msg>
-  <msg key="Account_Registration">Konto-Registrierung</msg>
+  <msg key="Account_Registration">Konto Registrierung</msg>
   <msg key="Account_registration_URL">URL zum registrieren eines Kontos</msg>
   <msg key="Actions">Aktionen</msg>
-  <msg key="Actions_Minute">Actionen/Minute</msg>
-  <msg key="Add_callback">Neuer Callback
-</msg>
-  <msg key="Administration">Administration</msg>
   <msg key="Authentication">Authentifizierung</msg>
   <msg key="Authority_name">Domänenname</msg>
-  <msg key="Batch_sync_enabled">Batch-Synchronization aktiviert</msg>
-  <msg key="Batch_Synchronization">Batch-Synchronisierung</msg>
-  <msg key="Creation_user">Angelegt von</msg>
-  <msg key="Delete">Löschen</msg>
-  <msg key="Delete_callback">Callback löschen</msg>
   <msg key="Disable_this_authority">Diese Domäne deaktivieren</msg>
-  <msg key="Document_end_time">Dokument-Enddatum</msg>
-  <msg key="Document_message">Documentennachricht</msg>
-  <msg key="Document_start_time">Startzeit</msg>
-  <msg key="Document_status">Dokumentenstatus</msg>
-  <msg key="download">Runterladen</msg>
-  <msg key="Edit_callback">Callback bearbeiten</msg>
   <msg key="Enable_this_authority">Diese Domäne aktivieren</msg>
-  <msg key="Enabled">Aktiv?</msg>
-  <msg key="End_time">Endzeit</msg>
-  <msg key="Help_contact_help_text">Kontaktinformationen (Telefon, E-Mail, etc.) die angezeigt werden, wenn ein Benutzer Probleme mit der Anmeldung an dieser Domäne hat.</msg>
+  <msg key="Enabled">Aktiv</msg>
+  <msg key="Help_contact_help_text">Kontaktinformationen (Telefon, Email, etc.) die angezeigt werden, wenn ein Benutzer Probleme mit der Anmeldung an dieser Domäne hat.</msg>
   <msg key="Make_this_the_authority_for_registering_new_users">Dies zur Domäne für die Registrierung neuer Benutzer machen</msg>
   <msg key="Move_this_authority_down">Diese Domäne nach unten bewegen</msg>
   <msg key="Move_this_authority_up">Diese Domäne nach oben bewegen</msg>
   <msg key="Name">Name</msg>
   <msg key="No">Nein</msg>
-  <msg key="Order">Sortierreihenfolge</msg>
-  <msg key="Package_Manager">Paketverwaltung</msg>
+  <msg key="Order">Ordnung</msg>
   <msg key="Password">Passwort</msg>
   <msg key="Registration">Registrierung</msg>
-  <msg key="Tcl_Callbacks">TCL-Callbacks</msg>
-  <msg key="Tcl_Proc">TCL-Prozedur</msg>
   <msg key="Type">Typ</msg>
   <msg key="User_Info_help_text">Die Implementierung um Benutzerinformationen in Echtzeit von der Domäne zu holen</msg>
   <msg key="Yes">Ja</msg>
