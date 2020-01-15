@@ -21,6 +21,19 @@
   <b>&raquo;</b> <a href="@show_users_url@">Show users in this authority</a> (@num_users@ users)
 </p>
 
+<if @import_users_url@ not nil>
+  <p>
+    <b>&raquo;</b> <a href="@import_users_url@">Batch-import users for this authority</a>
+  </p>
+</if>
+
+<if @import_groups_url@ not nil>
+  <p>
+    <b>&raquo;</b> <a href="@import_groups_url@">Batch-import groups for this authority</a>
+  </p>
+</if>
+
+
 <if @display_batch_history_p@ true>
   <h2>Batch Jobs</h2>
 

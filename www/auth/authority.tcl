@@ -322,6 +322,12 @@ if { ($initial_request_p || $submit_p) && !$local_authority_p } {
     }    
 }
 
+
+
+set import_users_url [export_vars -base "/auth-ldap-adldapsearch/import-users"]
+
+
+
 # Local variables:
 #    mode: tcl
 #    tcl-indent-level: 4
