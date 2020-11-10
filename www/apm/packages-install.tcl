@@ -79,8 +79,30 @@ foreach spec_file $all_spec_files {
 }
 
 apm_log APMDebug $spec_files
+set formName "pkgsForm"
 
-set body ""
+set body "
+	    	<script type='text/javascript' nonce='[im_csp_nonce]'>
+		window.addEventListener('load', function() {
+		     document.getElementById('check_all').addEventListener('click', function() { 
+                             var install_form = document.getElementsByName('$formName')\[0\];
+                             for (var i = 0; i < install_form.length; ++i) {
+                                 install_form.elements\[i\].checked = true;
+                                 //install_form.elements\[i\].href = '';
+                             }
+                     });
+
+		     document.getElementById('uncheck_all').addEventListener('click', function() { 
+                             this.value = ''; 
+                             var install_form = document.getElementsByName('$formName')\[0\];
+                             for (var i = 0; i < install_form.length; ++i) {
+                                 install_form.elements\[i\].checked = false;
+                             }
+                     });
+
+		});
+		</script>
+"
 
 if { $spec_files eq "" } {
     # No spec files to work with.
@@ -102,7 +124,6 @@ if { $spec_files eq "" } {
         </div>
     }]
     
-    set formName "pkgsForm"
     template::add_event_listener \
         -id check_all \
         -script [subst {
