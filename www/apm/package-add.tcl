@@ -222,7 +222,6 @@ for URLs, in which case you should precede them with <tt>mailto:</tt> (e.g.,
 <tr>
   <td></td>
   <td>If the package is being released by a company, type in its name and URL here.
-<!-- ArsDigita employees should <a href="javascript:var form = document.getElementsByName('$form_name')\[0\]; form.vendor.value='ArsDigita Corporation';form.vendor_uri.value='http://www.arsdigita.com/';void(0)">click here</a> to fill this in automatically.</td> -->
 </tr>
 
 <tr>
